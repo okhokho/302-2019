@@ -1,0 +1,6 @@
+shipping_id,item_id,quantity,weight_KG,shipper_name,shipper_email,receiver_name,receiver_address,receiver_contact
+ship6,item4,25,50,WINCO,BYW@WWW,YIN,Tsim Sha Tsui SCOPE CP3LT1,999
+ship7,item2,42,42,WINCO,BYW@WWW,YIN,Tsim Sha Tsui SCOPE CP3LT1,999
+ship8,item3,12,24,WINCO,BYW@WWW,YIN,Tsim Sha Tsui SCOPE CP3LT1,999
+ship9,item3,32,64,WINCO,BYW@WWW,YIN,Tsim Sha Tsui SCOPE CP3LT1,999
+ship10,item1,43,43,WINCO,BYW@WWW,YIN,Tsim Sha Tsui SCOPE CP3LT1,999

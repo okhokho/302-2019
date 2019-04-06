@@ -1,0 +1,4 @@
+shipping_id,item_id,quantity,weight_KG,shipper_name,shipper_email,receiver_name,receiver_address,receiver_contact
+ship1,item1,88,88,EDMOND,SB@www,YIN,Tsim Sha Tsui SCOPE CP3LT1,999
+ship2,item2,87,87,Cheeper,0NX@www,COW,Tsim Sha Tsui SCOPE L1-2301,911
+ship3,item1,54,54,EDMOND,SB@www,YIN,Tsim Sha Tsui SCOPE CP3LT1,999

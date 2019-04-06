@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% if session.logged_in %}
+  <h1>About Us</h1>
+<br>
+<h4>We are Manufacturer!</h4>
+{% else %}
+  <h1>About Us</h1>
+<br>
+<h4>We are Manufacturer!</h4>
+<br>
+<center><a href="/login" class="btn btn-success btn-lg">Login</a></center>
+{% endif %}
+{% endblock %}

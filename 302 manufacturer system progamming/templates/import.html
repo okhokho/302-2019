@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% if session.logged_in %}
+
+
+<html>
+<head>
+<title>Import</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+  <div class="jumbotron">
+<form id="importcsv-form" action="{{ url_for('importcsv') }}" method="POST" enctype="multipart/form-data">
+
+    <strong>*Please Import Shipping Invoice.csv Format File</strong>
+	<br>
+	<br>
+    <input id="file-picker" type="file" name="file" accept="*" multiple>
+	<br>
+    <div id="msg"></div>
+	<br>
+    <input type="submit" class="btn btn-primary" value="Import!" id="importcsv-button">
+</form>
+</div>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'csv') || (ext == ''))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+</html>
+{% else %}
+  <div class="jumbotron text-center">
+    <h3>Please Login to Import!</h3>
+</div>
+<br>
+	<center><a href="/login" class="btn btn-success btn-lg">Login</a></center>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% if session.logged_in %}
+Stock
+<table width="700" border="1">
+<thead>
+<td>item_id</td>
+<td>ADD item</td>
+<td>total add</td>
+<td>total ship</td>
+<td>stock</td>
+</thead>
+
+<tr>
+<td>item1</td>
+<td rowspan="4">
+{% from "includes/_formhelpers.html" import render_field %}
+  <form method="POST" action="">
+    <div class="form-group">
+      {{render_field(form.item1, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.item2, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.item3, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.item4, class_="form-control")}}
+    </div>
+	<p><input type="submit" value="ADD">
+  </form>
+</td>
+<td>{% for row in item1addd %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item1shipp %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item1stockk %}{{row["stock"]}}{% endfor %}</td>
+</tr>
+<tr><td>item2</td>
+<td>{% for row in item2addd %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item2shipp %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item2stockk %}{{row["stock"]}}{% endfor %}</td>
+</tr>
+<tr><td>item3</td>
+<td>{% for row in item3addd %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item3shipp %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item3stockk %}{{row["stock"]}}{% endfor %}</td>
+</tr>
+<tr><td>item4</td>
+<td>{% for row in item4addd %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item4shipp %}{{row["sum(quantity)"]}}{% endfor %}</td>
+<td>{% for row in item4stockk %}{{row["stock"]}}{% endfor %}</td>
+</tr>
+</table>
+<br>
+Ship Invoice History
+<table width="700" border="1">
+    <thead>
+        <td>shipping_id</td>
+        <td>item_id</td>
+		<td>quantity</td>
+		<td>weight_KG</td>
+		<td>shipper_name</td>
+		<td>shipper_email</td>
+		<td>receiver_name</td>
+		<td>receiver_address</td>
+		<td>receiver_contact</td>
+		<td>Import_time</td>
+    </thead>
+    {% for row in rows %}
+        <tr>
+             <td>{{row["shipping_id"]}}</td>
+             <td>{{row["item_id"]}}</td>
+             <td>{{row["quantity"]}}</td>
+             <td>{{row['weight_KG']}}</td>
+             <td>{{row['shipper_name']}}</td>
+			 <td>{{row['shipper_email']}}</td>
+			 <td>{{row['receiver_name']}}</td>
+			 <td>{{row['receiver_address']}}</td>
+			 <td>{{row['receiver_contact']}}</td>
+			 <td>{{row['Import_time']}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+ADD Item History
+<table width="700" border="1">
+    <thead>
+		<td>additem_id</td>
+        <td>item_id</td>
+        <td>quantity</td>
+		<td>add_time</td>
+    </thead>
+    {% for row in rows2 %}
+        <tr>
+			 <td>{{row["additem_id"]}}</td>
+             <td>{{row["item_id"]}}</td>
+             <td>{{row["quantity"]}}</td>
+             <td>{{row["add_time"]}}</td>
+        </tr>
+    {% endfor %}
+<br>
+{% else %}
+  <div class="jumbotron text-center">
+    <h3>Please Login to use!</h3>
+</div>
+<br>
+	<center><a href="/login" class="btn btn-success btn-lg">Login</a></center>
+{% endif %}
+{% endblock %}
